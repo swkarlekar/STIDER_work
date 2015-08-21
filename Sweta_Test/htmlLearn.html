@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-885">
+        <title>JavaScript Tutorial</title>
+    </head>
+    
+    <body>
+        <script language="javascript" type="text/javascript">
+            <!-- Hide JavaScript-->
+            document.write(Number.MAX_VALUE + "<br />");
+            document.write(Number.MIN_VALUE + "<br />");
+            var temp = "Here are some escaped characters \" \' \\ \t \n";
+            document.write(temp);
+            <!-- string.length, charAt, substring, indexOf float_bar.toFixed(#), typeof(value), parseInt(value), false = 0 = Nan, true = everything else, && || !-->
+            var str_var = "5";
+            document.write(str_var+ "<br />");
+            document.write(Number(str_var) + 5); 
+            var vehicles = new Array("car", "truck", "SUV", "sedan", "van", "ferrari"); 
+            for(vehicle in vehicles)
+                document.write(vehicles[vehicle] + "<br />");
+             
+            var rand_var = (5 < 10) ? "5 is less than 10" : "5 is greater than 10";
+            document.write(rand_var);
+            if(5>10)
+                document.write("5 is greater than 10");
+            else if (5 == 10)
+                document.write("5 == ten");
+           else
+                document.write("none");
+			
+	
+        </script>
+        <noscript>
+            	<h3>This site requires JavaScript</h3>
+        </noscript>
+    </body>
+
+</html>

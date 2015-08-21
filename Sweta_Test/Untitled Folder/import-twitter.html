@@ -1,0 +1,127 @@
+
+<div class="panel panel-default" ng-controller="ImportTwitterCtrl"> 
+<div id="kla" class="panel-body">
+<script>
+var aheight = $(window).height()-135;
+$('#kla').height(aheight);
+//alert(aheight);
+</script>
+
+<div class="row container1 nopadding">
+	<div class="col-md-1 nopadding"> </div>
+	<div class="col-md-9 nopadding">
+ 	
+ 		<div class="row">
+ 			<div class="col-md-12">
+	     		<div class="well well-sm text-center" style="padding:0; margin:0">  <span class="glyphicon glyphicon-import" aria-hidden="true">&nbsp;</span>Import Tweets</div>		 	
+			</div>
+		</div>			
+ 		<div class="row">
+ 			<div class="col-md-12">
+ 				<textarea  placeholder="Enter keywords separated by commas" ng-model = "twitterKeywords" class="form-control"></textarea> 
+      		</div>
+     	</div>	
+     	<div class="row">
+ 			<div class="col-md-3">
+ 				<input type="text" placeholder="Enter number of tweets" ng-model = "numberOfTweets" class="form-control">
+      		</div>
+ 			<div class="col-md-9 pull-left">
+ 				<button class="btn btn-success" type="button" ng-click="startTwitterImport()">Go</button>
+ 				<button class="btn btn-warning label-black-text" type="button" ng-click="clear()">Clear</button>
+ 	 		</div>        	
+ 		</div>	
+     </div>
+</div>
+
+<div class="row container1 nopadding">
+	<div class="col-md-1"></div>
+	<div class="alert alert-info col-md-9 padding-three nomargin"  ng-show="importTwitterResult=='success' || importTwitterResult=='failure' || importTwitterResult=='started_processing'" role="alert">
+       <span class="glyphicon glyphicon-retweet" aria-hidden="true">&nbsp;</span>
+       {{displayTwitterStartMessage}}
+    </div>
+</div> <!-- end row -->
+
+<div class="row container1 nopadding">
+	<div class="col-md-1"></div>
+    <div class="alert alert-success col-md-9 padding-three nomargin" ng-show="importTwitterResult=='success'" role="alert">
+      <span class="glyphicon glyphicon-ok" aria-hidden="true">&nbsp;</span>
+       {{displayTwitterSuccessMessage}}
+    </div>
+</div> <!-- end row -->
+
+<div class="row container1 nopadding">
+	<div class="col-md-1"></div>
+    <div class="alert alert-danger col-md-9 padding-three nomargin" ng-show="importTwitterResult=='failure'" role="alert">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp;</span>
+       {{displayTwitterFailureMessage}}
+    </div>
+</div> <!-- end row -->
+
+<div class="row container1 nopadding">
+	<div class="col-md-1"></div>
+    <div class="alert alert-danger col-md-9 padding-three nomargin" ng-show="importTwitterResult=='missing_keywords'" role="alert">
+    <span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp;</span>
+       {{displayMissingKeywordsMessage}}
+    </div>
+</div> <!-- end row -->
+
+<div class="row container1 nopadding">
+	<div class="col-md-1"></div>
+    <div class="alert alert-danger col-md-9 padding-three nomargin" ng-show="importTwitterResult=='missing_numberOfTweets'" role="alert">
+    <span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp;</span>
+       {{displayWrongNumberOfTweetsMessage}}
+    </div>
+</div> <!-- end row -->
+
+<div class="row container1 nopadding">
+	<div class="col-md-1"></div>
+    <div class="alert alert-info col-md-9 padding-three nomargin" ng-show="ingestTwitterResult=='started_processing' || ingestTwitterResult=='success' || ingestTwitterResult=='failure'" role="alert">
+    <span class="glyphicon glyphicon-book" aria-hidden="true">&nbsp;</span>
+       {{displayIngestTwitterStartMessage}}
+    </div>
+</div> <!-- end row -->
+
+
+
+
+
+
+
+
+<div class="row container1 nopadding" ng-show="pleaseWait=='Please wait...'">
+	<div class="col-md-1"></div>
+    <div class="alert alert-warning col-md-9 padding-three nomargin"  role="alert">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true">&nbsp;</span>
+       {{pleaseWait}}
+    </div>
+</div> <!-- end row -->
+
+
+<div class="row container1 nopadding" style="margin:4px 0 1 0" ng-show="tweetTextAvailable==true">
+	<div class="col-md-1"></div>
+    <div class="alert alert-default col-md-9 padding-three nomargin" style="padding:0; margin:0" role="alert">
+    	<div class="panel-heading padding-three text-center no-margin-well graybackground" style="border: 1px solid #000000"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">&nbsp;<span style="margin:0 4px 0 0">Tweets</span></span></div>
+    </div>
+</div> <!-- end row -->
+
+    
+<div class="row container1" ng-show="tweetTextAvailable==true">
+
+	<div class="col-md-1"></div>
+	<div class="col-md-9">	
+	<div class="panel panel-danger">
+   		<div class="list-group">
+   			<ul  ng-repeat="tweet in bunchOfTweets track by $index" style="padding:0 0 0 0" >
+  				<li style="padding:0 0 0 0" class="list-group-item list-group-item-warning"><labeled-tweet labelize="{{tweet}}"></labeled-tweet></li>
+			</ul>
+		</div>
+	</div>
+</div>	
+</div> <!-- end row -->
+
+
+
+
+</div> <!-- end panel body -->
+</div> <!-- end panel panel-default -->   
+  
